@@ -17,28 +17,37 @@ class Piece
   
   void draw()
   {
-    if(exists) image(icon,x*size+size/2,y*size+size/2);
+    if(exists)
+      image(icon, x * size + size / 2, y * size + size / 2);
   }
   
   void draw(Window applet)
   {
-    if(exists) applet.image(icon,x*applet.size+applet.size/2,y*applet.size+applet.size/2,applet.size,applet.size);
+    if(exists)
+      applet.image(icon, x * applet.size + applet.size / 2, y * applet.size + applet.size / 2, applet.size, applet.size);
   }
   
-  int value(){return exists ? (team ? -1 : 1) : 0;}
+  int value()
+  {
+    return exists ? (team ? -1 : 1) : 0;
+  }
   
-  boolean possible(int x, int y){return exists && !square[x][y].ocp;}
+  boolean possible(int x, int y)
+  {
+    return exists && !square[x][y].ocp;
+  }
   
   void move(int u, int w)
   {
-    if(square[u][w].piece != null) square[u][w].piece.destroy();
+    if(square[u][w].piece != null)
+      square[u][w].piece.destroy();
     square[x][y].ocp = false;
     square[x][y].piece = null;
     square[u][w].ocp = true;
     square[u][w].piece = this;
-    moved = true;
     x = u;
     y = w;
+    moved = true;
     turn = !turn;
   }
   
