@@ -29,15 +29,10 @@ void initialize()
   
   square = new Square[8][8];
   for(int i=0; i<8; i++)
-    square[i] = new Square[8];
-
-  for(int i=0; i<8; i++)
     for(int j=0; j<8; j++)
       square[i][j] = new Square(i, j);
   
-  piece = new Piece[2][];
-  for(int i=0; i<2; i++)
-    piece[i] = new Piece[16];
+  piece = new Piece[2][16];
   
   for(int i=0; i<8; i++)
     piece[0][i] = new Pawn(i, 6, true);
@@ -114,10 +109,7 @@ void play()
     else
     {
       temp = alphac(piece[1][i].x, piece[1][i].y, j, k, piece[1][i].x, piece[1][i].y, j, k, depth - 1, optimal);
-      
-      if(temp.score == optimal.score && random(8) < 1)
-        optimal = temp;
-      if(temp.score > optimal.score)
+      if(temp.score > optimal.score || (temp.score == optimal.score && random(8) < 1))
         optimal = temp;
     }
   }
@@ -150,10 +142,7 @@ Move alphac(int sx, int sy, int tx, int ty, int osx, int osy, int otx, int oty, 
       else
       {
         temp = betac(piece[0][i].x, piece[0][i].y, j, k, osx, osy, otx, oty, d - 1, worst);
-        
-        if(temp.score == worst.score && random(8) < 1)
-          worst = temp;
-        else if(temp.score < worst.score)
+        if(temp.score < worst.score || (temp.score == worst.score && random(8) < 1))
           worst = temp;
       }
       
@@ -203,10 +192,7 @@ Move betac(int sx, int sy, int tx, int ty, int osx, int osy, int otx, int oty, i
       else
       {
         temp = alphac(piece[1][i].x, piece[1][i].y, j, k, osx, osy, otx, oty, d - 1, best);
-        
-        if(temp.score == best.score && random(8) < 1)
-          best = temp;
-        else if(temp.score > best.score)
+        if(temp.score > best.score || (temp.score == best.score && random(8) < 1))
           best = temp;
       }
       

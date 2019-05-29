@@ -3,27 +3,22 @@ class Queen extends Piece
   Queen(int i, int j, boolean t)
   {
     super(i, j, t);
-    
-    if(t)
-      icon = loadImage("queen1.png");
-    else
-      icon = loadImage("queen0.png");
-      
-    icon.resize(size,size);
+    icon = loadImage(t ? "queen1.png" : "queen0.png");
+    icon.resize(size, size);
   }
   
   int value()
   {
-    return 13 * super.value();
+    return 9 * super.value();
   }
   
   boolean possible(int u, int w)
   {
     int dx=u-x, dy=w-y, s;
     
-    if(exists && (dx==0 && dy!=0) || (dx!=0 && dy==0) || (dx!=0 && abs(dx)==abs(dy)))
+    if(exists && (dx==0 && dy!=0) || (dx!=0 && dy==0) || (dx!=0 && abs(dx) == abs(dy)))
     {
-      s = max(abs(dx),abs(dy));
+      s = max(abs(dx), abs(dy));
       dx /= s;
       dy /= s;
       

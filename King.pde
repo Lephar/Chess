@@ -3,18 +3,13 @@ class King extends Piece
   King(int i, int j, boolean t)
   {
     super(i, j, t);
-    
-    if(t)
-      icon = loadImage("king1.png");
-    else
-      icon = loadImage("king0.png");
-    
+    icon = loadImage(t ? "king1.png" : "king0.png");
     icon.resize(size,size);
   }
   
   int value()
   {
-    return 87 * super.value();
+    return 32 * super.value();
   }
   
   boolean possible(int u, int w)

@@ -3,12 +3,7 @@ class Bishop extends Piece
   Bishop(int i, int j, boolean t)
   {
     super(i, j, t);
-    
-    if(t)
-      icon = loadImage("bishop1.png");
-    else
-      icon = loadImage("bishop0.png");
-    
+    icon = loadImage(t ? "bishop1.png" : "bishop0.png");
     icon.resize(size, size);
   }
   
@@ -19,7 +14,7 @@ class Bishop extends Piece
   
   boolean possible(int u, int w)
   {
-    int dx=u-x, dy=w-y, s;
+    int dx = u-x, dy = w-y, s;
     
     if(exists && abs(dx) != 0 && abs(dx) == abs(dy))
     {

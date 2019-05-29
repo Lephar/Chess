@@ -10,7 +10,7 @@ class Square
     y = j;
     slc = false;
     ocp = false;
-    col = (x + y) % 2 == 0 ? true : false;
+    col = (x+y) % 2 == 0 ? true : false;
     piece = null;
   }
   
@@ -26,7 +26,6 @@ class Square
       fill(#f5f5f5);
     else
       fill(#424242);
-    
     rect(x * size, y * size, size, size);
   }
   
@@ -36,7 +35,6 @@ class Square
       applet.fill(#f5f5f5);
     else
       applet.fill(#424242);
-    
     applet.rect(x * applet.size, y * applet.size, applet.size, applet.size);
   }
   
