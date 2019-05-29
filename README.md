@@ -1,5 +1,5 @@
 # Chess
-Chess with AI, min-max with alpha-beta pruning
+Chess with AI, min-max algorithm with alpha-beta pruning
 
 # Credits
 İbrahim Yılmaz\
